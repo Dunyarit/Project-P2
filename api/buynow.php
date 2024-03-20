@@ -9,7 +9,7 @@
             $amount = 0;
             $product = $_POST['product'];
 
-            $stmt = $db->prepare('select id,price from sp_product order by id desc');
+            $stmt = $db->prepare('SELECT id,price from sp_product order by id desc');
             if($stmt->execute()) {
 
                 $queryproduct = array();
@@ -30,6 +30,10 @@
                         }
                     }
                 }
+
+
+
+
 
                 $shiping = $amount + 60;
                 $vat = $shiping * 7 / 100;

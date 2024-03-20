@@ -11,7 +11,6 @@
             if($stmt->execute()) {
                 $num - $stmt->rowCount();
                 if($num > 0) {
-
                     $object->Result = array();
                     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         extract($row);
