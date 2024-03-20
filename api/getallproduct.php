@@ -1,12 +1,12 @@
 <?php
 
-    require_once('./db.php');
+    require_once('./api/db.php');
 
     try {
         if($_SERVER['REQUEST_METHOD'] == 'GET') {
             $object = new stdClass();
 
-            $stmt = $db->prepare('select name as productname,price,description from sp_product order by id desc');
+            $stmt = $db->prepare('select * from sp_product order by id desc');
 
             if($stmt->execute()) {
                 $num - $stmt->rowCount();
@@ -46,7 +46,7 @@
             http_response_code(405);
         }
     }
-    catch(PEOException $e) {
+    catch(PDOException $e) {
         http_response_code(500);
         echo $e->getMessage();
     }

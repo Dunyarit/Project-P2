@@ -26,7 +26,13 @@ var product = [{
 $(document).ready(() => {
 
     $.ajax({
-        method: ''
+        method: 'get',
+        url: './api/getallproduct.php',
+        success: function(response) {
+            console.log(response)
+        },error: function(err) {
+            console.log(err)
+        }
     })
 
     var html = '';

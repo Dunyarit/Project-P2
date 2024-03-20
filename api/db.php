@@ -7,12 +7,11 @@
     header('Content-Type: application/json');
 
     try {
-        $db = new PDO("mysql:host=${db_host}; dbname=${db_name}", $db_user,$db_pass);
-        db->setAttributte(PDO::ATTR_ERRMODE, PDO::ATTR_ERRMODE_EXCEPTION);
-        // echo "database is connected";
+        $db = new PDO("mysql:host=$db_host; dbname=$db_name", $db_user, $db_pass);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        echo "database is connected";
     }
-    catch(PEOException $e) {
+    catch(PDOException $e) {
         echo $e->getMessage();
     }
 ?>
-
