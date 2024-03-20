@@ -1,25 +1,27 @@
-var product = [{
-    id: 1,
-    img: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGl6emF8ZW58MHx8MHx8fDA%3D',
-    name: 'Pizza',
-    price: 199,
-    desciption:'Pizza Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis corrupti temporibus unde odit consequatur. Ipsum.',
-    type:'food'
-}, {
-    id:2,
-    img:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D',
-    name: 'Chicken Steak',
-    price: 300,
-    desciption:'Chicken Steak Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis corrupti temporibus unde odit consequatur. Ipsum.',
-    type: 'protein'
-}, {
-    id:3,
-    img:'https://images.unsplash.com/photo-1624552184280-9e9631bbeee9?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29rZXxlbnwwfHwwfHx8MA%3D%3D',
-    name: 'Coke',
-    price: 30,
-    desciption:'Coke Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis corrupti temporibus unde odit consequatur. Ipsum.',
-    type: 'drink'
-}];
+// var product = [{
+//     id: 1,
+//     img: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGl6emF8ZW58MHx8MHx8fDA%3D',
+//     name: 'Pizza',
+//     price: 199,
+//     desciption:'Pizza Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis corrupti temporibus unde odit consequatur. Ipsum.',
+//     type:'food'
+// }, {
+//     id:2,
+//     img:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D',
+//     name: 'Chicken Steak',
+//     price: 300,
+//     desciption:'Chicken Steak Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis corrupti temporibus unde odit consequatur. Ipsum.',
+//     type: 'protein'
+// }, {
+//     id:3,
+//     img:'https://images.unsplash.com/photo-1624552184280-9e9631bbeee9?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29rZXxlbnwwfHwwfHx8MA%3D%3D',
+//     name: 'Coke',
+//     price: 30,
+//     desciption:'Coke Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis corrupti temporibus unde odit consequatur. Ipsum.',
+//     type: 'drink'
+// }];
+
+var product;
 
 //[{},{},{}]  //length 3
 
@@ -30,20 +32,26 @@ $(document).ready(() => {
         url: './api/getallproduct.php',
         success: function(response) {
             console.log(response)
+            if(response.RespCode ==200) {
+
+                product = response.Result;
+
+                var html = '';
+                for (let i = 0; i < product.length; i++) {
+                    html += `<div onclick="openProductDetail(${i})" class="product-items ${product[i].type}">
+                                <img  class="product-img" src="./imge/${product[i].img}">
+                                <p style="font-size: 1.2vw;">${product[i].name}</p>
+                                <p style="font-size: 1vw;">${numberWithCommas(product[i].price)} THB</p>
+                             </div>`;
+    }
+    $("#productlist").html(html);
+            }
         },error: function(err) {
             console.log(err)
         }
     })
 
-    var html = '';
-    for (let i = 0; i < product.length; i++) {
-            html += `<div onclick="openProductDetail(${i})" class="product-items ${product[i].type}">
-                <img  class="product-img" src="${product[i].img}">
-                <p style="font-size: 1.2vw;">${product[i].name}</p>
-                <p style="font-size: 1vw;">${numberWithCommas(product[i].price)} THB</p>
-                </div>`;
-    }
-    $("#productlist").html(html);
+    
 
 })
 function numberWithCommas(x) {
@@ -63,7 +71,7 @@ function searchsomething(elem) {
     for (let i = 0; i < product.length; i++) {
         if( product[i].name.includes(value) ) {
             html += `<div onclick="openProductDetail(${i})" class="product-items ${product[i].type}">
-                <img class="product-img" src="${product[i].img}">
+                <img class="product-img" src="./imge/${product[i].img}">
                 <p style="font-size: 1.2vw;">${product[i].name}</p>
                 <p style="font-size: 1vw;">${numberWithCommas(product[i].price)} THB</p>
                 </div>`;
@@ -92,7 +100,7 @@ function openProductDetail(index) {
     productindex = index;
     console.log(productindex)
     $("#modalDesc").css('display', 'flex')
-    $("#mdd-img").attr('src', product[index].img);
+    $("#mdd-img").attr('src', './imge/'+ product[index].img);
     $("#mdd-name").text(product[index].name)
     $("#mdd-price").text( numberWithCommas(product[index].price) +' THB')
     $("#mdd-desc").text(product[index].desciption) 
@@ -146,7 +154,7 @@ function rendercart() {
         for (let i = 0; i < cart.length; i++) {
              html += `  <div class="cartlist-items">
                     <div class="cartlist-left">
-                        <img src="${cart[i].img}" alt="">
+                        <img src="./imge/${cart[i].img}" alt="">
                         <div class="cartlist-detail">
                         <p style="font-size: 1.5vw;">${cart[i].name}</p>
                         <p style="font-size: 1.2vw;">${ numberWithCommas(cart[i].price * cart[i].count) } THB</p>
@@ -204,4 +212,35 @@ function deinitems(action, index) {
         cart[index].count++;
         $("#countitems"+index).text(cart[index].count)
     }
+}
+
+function buynow() {
+    $.ajax({
+        method: 'post',
+        url: './api/buynow.php',
+        data:{
+            product: cart
+        }, success: function(response) {
+            console.log(response)
+            if(response.RespCode ==200) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Thank you',
+                    html: ` <p> Amount : ${response.Amount.Amount}</p>
+                            <p> Shipping : ${response.Amount.Shipping}</p>
+                            <p> Vat : ${response.Amount.Vat}</p>
+                            <p> Netamount : ${response.Amount.Netamount}</p>
+                            `
+                })
+            }
+            else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Something is went wrong!'
+                })
+            }
+        }, error: function(err) {
+            console.log(err)
+        } 
+    })
 }
