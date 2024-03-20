@@ -248,5 +248,6 @@ function buynow() {
         }, error: function(err) {
             console.log(err)
         } 
+        
     })
 }
