@@ -231,6 +231,12 @@ function buynow() {
                             <p> Vat : ${response.Amount.Vat}</p>
                             <p> Netamount : ${response.Amount.Netamount}</p>
                             `
+                }).then((res) => {
+                    if(res.isConfrimed) {
+                        cart = [];
+                        closeModal();
+                        $("#cartcount").css('display','none')
+                    }
                 })
             }
             else {
