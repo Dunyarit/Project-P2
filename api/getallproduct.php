@@ -1,16 +1,17 @@
 <?php
 
-    require_once('./api/db.php');
+    require_once('./db.php');
 
     try {
-        if($_SERVER['REQUEST_METHOD'] == 'GET') {
+        if($_SERVER['REQUEST_METHOD'] =='GET') {
             $object = new stdClass();
 
-            $stmt = $db->prepare('select * from sp_product order by id desc');
+            $stmt = $db->prepare('SELECT * from sp_product order by id desc');
 
             if($stmt->execute()) {
-                $num - $stmt->rowCount();
+                $num = $stmt->rowCount();
                 if($num > 0) {
+
                     $object->Result = array();
                     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         extract($row);
@@ -18,8 +19,8 @@
                         //     "thisisname" => $name,
                         //     "thisisprice" => $price,
                         // );
-                        // array_push(  $object->Result , $items );
-                        array_push(  $object->Result , $items );
+                        // array_push( $object->Result , $items );
+                        array_push( $object->Result , $row );
                     }
                     $object->RespCode = 200;
                     $object->RespMessage = 'success';
@@ -34,7 +35,7 @@
 
                 echo json_encode($object);
             }
-            else{
+            else {
                 $object->RespCode = 500;
                 $object->Log = 1;
                 $object->RespMessage = 'bad : bad sql';

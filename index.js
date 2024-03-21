@@ -1,24 +1,24 @@
 // var product = [{
 //     id: 1,
-//     img: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGl6emF8ZW58MHx8MHx8fDA%3D',
-//     name: 'Pizza',
-//     price: 199,
-//     desciption:'Pizza Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis corrupti temporibus unde odit consequatur. Ipsum.',
-//     type:'food'
+//     img: 'https://images.unsplash.com/photo-1594223274512-ad4803739b7c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmFnc3xlbnwwfHwwfHx8MA%3D%3D',
+//     name: 'Handbag1',
+//     price: 399,
+//     desciption:'handbag Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis corrupti temporibus unde odit consequatur. Ipsum.',
+//     type:'handbag'
 // }, {
 //     id:2,
-//     img:'https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Zm9vZHxlbnwwfHwwfHx8MA%3D%3D',
-//     name: 'Chicken Steak',
-//     price: 300,
-//     desciption:'Chicken Steak Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis corrupti temporibus unde odit consequatur. Ipsum.',
-//     type: 'protein'
+//     img:'https://images.unsplash.com/photo-1620786514684-ff35b5aae55e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHNob3VsZGVyJTIwYmFnfGVufDB8fDB8fHww',
+//     name: 'Shoulder bag1',
+//     price: 1500,
+//     desciption:'Shoulder bag Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis corrupti temporibus unde odit consequatur. Ipsum.',
+//     type: 'shoulderbag'
 // }, {
 //     id:3,
-//     img:'https://images.unsplash.com/photo-1624552184280-9e9631bbeee9?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29rZXxlbnwwfHwwfHx8MA%3D%3D',
-//     name: 'Coke',
-//     price: 30,
-//     desciption:'Coke Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis corrupti temporibus unde odit consequatur. Ipsum.',
-//     type: 'drink'
+//     img:'https://images.unsplash.com/photo-1622560480654-d96214fdc887?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGJhZ3N8ZW58MHx8MHx8fDA%3D',
+//     name: 'Backpack1',
+//     price: 599,
+//     desciption:'Backpack Lorem ipsum dolor sit amet consectetur, adipisicing elit. Perferendis corrupti temporibus unde odit consequatur. Ipsum.',
+//     type: 'backpack'
 // }];
 
 var product;
@@ -41,7 +41,7 @@ $(document).ready(() => {
                     html += `<div onclick="openProductDetail(${i})" class="product-items ${product[i].type}">
                                 <img  class="product-img" src="./imge/${product[i].img}">
                                 <p style="font-size: 1.2vw;">${product[i].name}</p>
-                                <p style="font-size: 1vw;">${numberWithCommas(product[i].price)} THB</p>
+                                <p style="font-size: 1vw;">${numberWithCommas(product[i].price) } THB</p>
                              </div>`;
     }
     $("#productlist").html(html);
@@ -248,6 +248,6 @@ function buynow() {
         }, error: function(err) {
             console.log(err)
         } 
-        
+
     })
 }
