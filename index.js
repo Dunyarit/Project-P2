@@ -44,7 +44,7 @@ $(document).ready(() => {
                                 <p style="font-size: 1vw;">${numberWithCommas(product[i].price) } THB</p>
                              </div>`;
     }
-    $("#productlist").html(html);
+    $("#productlist").html(html);   
             }
         },error: function(err) {
             console.log(err)
