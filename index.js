@@ -189,7 +189,7 @@ function deinitems(action, index) {
                     confirmButtonText: 'Delete',
                     cancelButtonText: 'Cancel'
                 }).then((res) => {
-                    if(res.isConfrimed) {
+                    if(res.isConfirmed) {
                         cart.splice(index, 1)
                         console.log(cart)
                         rendercart();
@@ -216,13 +216,13 @@ function deinitems(action, index) {
 
 function buynow() {
     $.ajax({
-        method: 'post',
+        method: 'POST',
         url: './api/buynow.php',
-        data:{
+        data: {
             product: cart
         }, success: function(response) {
             console.log(response)
-            if(response.RespCode ==200) {
+            if(response.RespCode == 200) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Thank you',
@@ -232,7 +232,7 @@ function buynow() {
                             <p> Netamount : ${response.Amount.Netamount}</p>
                             `
                 }).then((res) => {
-                    if(res.isConfrimed) {
+                    if(res.isConfirmed) {
                         cart = [];
                         closeModal();
                         $("#cartcount").css('display','none')
