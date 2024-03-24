@@ -216,7 +216,7 @@ function deinitems(action, index) {
 
 function buynow() {
     $.ajax({
-        method: 'post',
+        method: 'POST',
         url: './api/buynow.php',
         data: {
             product: cart
