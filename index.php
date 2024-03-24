@@ -40,13 +40,14 @@
                 </h3>
             </div>
         <?php endif ?>
+        <img src="imge/logopro.png" alt="">
        
     
         <?php if(isset($_SESSION['username'])) : ?>
             <p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
             <p><a href="index.php?logout='1'" style="color: red;">Logout</a></p>
         <?php endif ?>
-        <p><a href="index.html">go</a></p>
+        <p><a href="index.html" class="btnindex">Go in site</a></p>
     </div>
 
 </body>
