@@ -25,7 +25,7 @@ form {
     margin: 0 auto;
     padding: 20px;
     border: 1px solid rgb(152, 75, 75);
-    background: white;
+    background: rgb(225, 225, 225);
     border-radius: 0px 0px 10px 10px;
 }
 
@@ -38,7 +38,7 @@ form {
     text-align: center;
     padding-top: 3rem;
     width: 100%;
-    background: #ccc;
+    background: #fffcfc;
     height: 100vh;
 }
 
@@ -70,14 +70,17 @@ form {
     border-radius: 5px;
 }
 
-.btnindex {
-    padding: 10px;
+ .btnindex {
+    padding: 5px;
     font-size: 15px;
     color: white;
-    background: rgb(171, 97, 96);
+    background: rgb(174, 54, 52);
     border: none;
     border-radius: 5px;
+    margin-top: 80px;
 }
+
+
 
 .error {
     width: 92%;
