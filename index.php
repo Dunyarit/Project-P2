@@ -46,10 +46,7 @@
             <p>Welcome <strong><?php echo $_SESSION['username']; ?></strong></p>
             <p><a href="index.php?logout='1'" style="color: red;">Logout</a></p>
         <?php endif ?>
-
-        <div class="input-group">
-        <button type="submit" name="reg_user" class="btn" ><a href="index.html"></a> GO in site</button>
-        </div>
+        <p><a href="index.html">go</a></p>
     </div>
 
 </body>
